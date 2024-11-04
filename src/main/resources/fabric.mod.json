@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "shelfviewer",
+  "version": "${version}",
+  "name": "ShelfViewer",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.setloth.shelfviewer.client.ShelfViewerClient"
+    ],
+    "main": [
+      "me.setloth.shelfviewer.ShelfViewer"
+    ]
+  },
+  "mixins": [
+    "shelfviewer.mixins.json",
+    {
+      "config": "shelfviewer.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

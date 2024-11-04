@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.setloth.shelfviewer.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "client.ChiseledBookshelfBlockAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
