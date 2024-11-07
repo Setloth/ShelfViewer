@@ -15,7 +15,7 @@ public class HudRenderer {
   }
 
   private static void onRenderHud(DrawContext drawContext, RenderTickCounter tickDelta) {
-    if (ShelfViewerClient.itemToRender.isEmpty()) return;
+    if (ShelfViewerClient.itemToRender.isEmpty() || client.isPaused()) return;
 
     TextRenderer textRenderer = client.textRenderer;
     drawContext.drawItemTooltip(textRenderer, ShelfViewerClient.itemToRender, drawContext.getScaledWindowWidth() / 2, drawContext.getScaledWindowHeight() / 2);

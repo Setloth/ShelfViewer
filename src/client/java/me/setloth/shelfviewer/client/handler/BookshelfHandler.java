@@ -3,6 +3,7 @@ package me.setloth.shelfviewer.client.handler;
 import me.setloth.shelfviewer.client.ShelfViewerClient;
 import me.setloth.shelfviewer.mixin.client.ChiseledBookshelfBlockAccessor;
 import me.setloth.shelfviewer.packet.RequestBookshelfPayload;
+import me.setloth.shelfviewer.packet.RequestBookshelfPayloadBukkit;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -41,8 +42,15 @@ public class BookshelfHandler {
 
       lastSlot.set(slot);
       lastBlockPos.set(blockPos);
+
       RequestBookshelfPayload payload = new RequestBookshelfPayload(blockPos, slot);
+      RequestBookshelfPayloadBukkit payloadBukkit = new RequestBookshelfPayloadBukkit(slot);
+
+      System.out.println("Sending request to server...");
       ClientPlayNetworking.send(payload);
+      System.out.println("Sending request to bukkit...");
+      ClientPlayNetworking.send(payloadBukkit);
+
 
     } else {
       ShelfViewerClient.itemToRender = ItemStack.EMPTY;

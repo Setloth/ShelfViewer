@@ -1,7 +1,9 @@
 package me.setloth.shelfviewer;
 
 import me.setloth.shelfviewer.packet.RequestBookshelfPayload;
+import me.setloth.shelfviewer.packet.RequestBookshelfPayloadBukkit;
 import me.setloth.shelfviewer.packet.ResponseBookshelfPayload;
+import me.setloth.shelfviewer.packet.ResponseBookshelfPayloadBukkit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -20,6 +22,9 @@ public class ShelfViewer implements ModInitializer {
   public void onInitialize() {
     PayloadTypeRegistry.playC2S().register(RequestBookshelfPayload.ID, RequestBookshelfPayload.CODEC);
     PayloadTypeRegistry.playS2C().register(ResponseBookshelfPayload.ID, ResponseBookshelfPayload.CODEC);
+
+    PayloadTypeRegistry.playC2S().register(RequestBookshelfPayloadBukkit.ID, RequestBookshelfPayloadBukkit.CODEC);
+    PayloadTypeRegistry.playS2C().register(ResponseBookshelfPayloadBukkit.ID, ResponseBookshelfPayloadBukkit.CODEC);
 
     ServerPlayNetworking.registerGlobalReceiver(RequestBookshelfPayload.ID, this::handleRequestBookshelfPayload);
   }
